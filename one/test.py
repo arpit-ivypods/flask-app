@@ -7,10 +7,11 @@ class HelloWorld(Resource):
     def post(self):
         try:
             es_object = Elasticsearch(
-                ['https://26a418083cab4f02933a878450866715.us-east-1.aws.found.io'], port=9243, http_auth=('elastic', 'M1t0Nda4IySU7nbLoownEnHW'))
-
+                ['https://26a418083cab4f02933a878450866715.us-east-1.aws.found.io'], port=9243, http_auth=('elastic', 'M1t0Nda4IySU7nbLoownEnHW'), use_ssl=True, verify_certs=True)
             # return "arpit"
-            query = {"match": {"fullName": "Ritika Subba"}}
+            query = {}
+            query["query"] = {}
+            query["query"] = {"match_all": {}}
             res = es_object.search(
                 index="users", body=query)
             for hit in res['hits']['hits']:
