@@ -15,6 +15,6 @@ class mongotest(Resource):
             print(mydoc)
             for x in mydoc:
                 print(x)
-                return json.dumps(str(x['_id']))
+                return json.dumps(str('hello'))
         except Exception as e:
             return {'status': '400', 'Message': str(e)}
