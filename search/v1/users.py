@@ -43,8 +43,8 @@ class listing(Resource):
                 'lat', type=float, help='pass the latitude', default=28.4498494)
             parser.add_argument(
                 'lng', type=float, help='pass the longitude', default=77.0566885)
-            parser.add_argument('page', type=int, help='page of listing', default=0)
-            parser.add_argument('count', type=int, help='total number of listings', default=3)
+            parser.add_argument('page', type=int, help='page of listing', default=1)
+            parser.add_argument('count', type=int, help='total number of listings', default=20)
             args = parser.parse_args()
             _lat = args['lat']
             _lng = args['lng']
