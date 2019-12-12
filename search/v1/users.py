@@ -50,7 +50,7 @@ class listing(Resource):
             _page = args['page']
             _count = args['count']
             query = userQueryBuilder(_lat, _lng, _page, _count)
-            return query
+            # return query
             res = es_object.search(
                 index="users", body=query)
             users = []

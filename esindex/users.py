@@ -17,7 +17,7 @@ def createEsUserIndex():
 def deleteUserIndex():
     es.delete('users')
 
-async def saveEsUser(data):
+def saveEsUser(data):
     for user in data:
         if (user['currentJourney'] == 'D'):
             attr = mongo.recordsById(user['_id'], 'userattributes')
