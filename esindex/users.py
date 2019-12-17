@@ -41,8 +41,7 @@ def createUserObj(user, attr):
     user = validate.dUser(user)
     attr = validate.dUserAttr(attr)
     userObj = {
-        '_id': str(user['_id']), 
-        'doc': {
+     
             'userId': str(user['_id']),
             'fullName': user['fullName'],
             'age': user['age'],
@@ -57,5 +56,5 @@ def createUserObj(user, attr):
                 'lon': attr['dPrefLocation']['coordinates']['lng']
             }
     }
-    }
+    
     return userObj
