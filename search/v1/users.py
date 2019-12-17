@@ -21,13 +21,13 @@ class userlisting(Resource):
             _page = args['page']
             _count = args['count']
             query = userQueryBuilder(_lat, _lng, _page, _count)
-            return query
+            # return query
             es_object = env.esConnect()
             res = es_object.search(
                 index="users", body=query)
             users = []
             count = res['hits']['total']['value']
-            print(count)
+            # print(count)
             for hit in res['hits']['hits']:
                 users.append(hit["_source"])
             return {'records':count, 'data':users}
