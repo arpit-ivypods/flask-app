@@ -6,7 +6,6 @@ import json
 
 
 def userQueryBuilder(lat, lon, start, size):
-    print(lat, lon, start, size)
     query = {}
     query["from"] = start
     query["size"] = size

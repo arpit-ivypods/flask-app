@@ -27,7 +27,6 @@ class userlisting(Resource):
                 index="users", body=query)
             users = []
             count = res['hits']['total']['value']
-            # print(count)
             for hit in res['hits']['hits']:
                 users.append(hit["_source"])
             return {'records':count, 'data':users}

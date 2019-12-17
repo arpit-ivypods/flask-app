@@ -30,7 +30,6 @@ class roomlisting(Resource):
                 
             rooms = []
             count = res['hits']['total']['value']
-            print(count)
             for hit in res['hits']['hits']:
                 rooms.append(hit["_source"])
             return {'records': count, 'data': rooms}

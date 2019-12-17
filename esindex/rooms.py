@@ -13,7 +13,6 @@ import uuid
 class createRoomsIndex(Resource):
     def post(self):
         try:
-            # print("one")
             createAllRoomsData()
         except Exception as e:
             return {'status': '400', 'Message': str(e)}
