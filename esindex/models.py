@@ -52,3 +52,67 @@ def user():
         }
     }
     return mappings
+
+def rooms():
+    mappings = {
+        "mappings": {
+            "properties": {
+                
+                "userId": {
+                    "type": "text"
+                },
+                "roomId": {
+                    "type": "text"
+                },
+                "houseId": {
+                    "type": "text"
+                },
+                "fullName": {
+                    "type": "text"
+                },
+                "age": {
+                    "type": "integer"
+                },
+                "college": {
+                    "type": "text"
+                },
+                "company": {
+                    "type": "text"
+                },
+                "userCoverPicture": {
+                    "type": "nested",
+                    "properties": {
+                        "url": {
+                            "type": "text"
+                        }
+                    }
+                },
+                "roomCoverPicture": {
+                    "type": "nested",
+                    "properties": {
+                        "url": {
+                            "type": "text"
+                        }
+                    }
+                },
+                "coordinates": {
+                    "type": "geo_point"
+                },
+                "rent": {
+
+                    "type": "integer"
+
+                },
+                'genderPref': {
+                    "type": "text"
+                },
+                "createdAt": {
+                    "type": "date"
+                },
+                "title": {
+                    "type": "text"
+                }
+            }
+        }
+    }
+    return mappings

@@ -12,9 +12,9 @@ def allRecords(col):
     mydoc = records.find()
     return mydoc
 
-def recordsById(id, col):
+def recordsById(key, val, col):
     records = db[col]
-    query = {"userId": id}
+    query = {key: val}
     mydoc = records.find(query)
-    for x in mydoc:
-        return x
+    for data in mydoc:
+        return data
