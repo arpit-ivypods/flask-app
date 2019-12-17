@@ -15,6 +15,9 @@ def allRecords(col):
 def recordsById(key, val, col):
     records = db[col]
     query = {key: val}
-    mydoc = records.find(query)
-    for data in mydoc:
-        return data
+    try:
+        mydoc = records.find(query)
+        for data in mydoc:
+            return data
+    except Exception as e:
+        return {}

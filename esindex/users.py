@@ -30,11 +30,22 @@ def createEsUserIndex():
 
 def saveEsUser(data):
     allUsers = []
+    count = 0
     for user in data:
-        if (user['currentJourney'] == 'D'):
-            attr = mongo.recordsById('userId',user['_id'], 'userattributes')
-            userObj = createUserObj(user, attr)
-            allUsers.append(userObj)
+        attr = ''
+        if user.get('currentJourney') != None:
+            if (user['currentJourney'] == 'D'):
+                try:
+                    attr = mongo.recordsById('userId',user['_id'], 'userattributes')
+                except Exception as e:
+                    print(e)
+                if attr == None:
+                    attr = {}
+                userObj = createUserObj(user, attr)
+                count += 1
+                allUsers.append(userObj)
+
+    print(count)
     es.insertBulk('users', allUsers)
 
 def createUserObj(user, attr):
@@ -45,6 +56,7 @@ def createUserObj(user, attr):
             'userId': str(user['_id']),
             'fullName': user['fullName'],
             'age': user['age'],
+            'author': user['author'],
             'college': user['college'],
             'company': user['company'],
             'coverPicture': {"url":user['coverPicture']['url']},

@@ -51,6 +51,7 @@ def createRoomObj(house, room, user):
         'age': user['age'],
         'college': user['college'],
         'company': user['company'],
+        'author': user['author'],
         'userCoverPicture': {'url': user['coverPicture']['url']},
         'locality': house['locality']['name'],
         'genderPref': house['genderPref'],
