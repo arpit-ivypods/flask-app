@@ -53,7 +53,7 @@ def createUserObj(user, attr):
     attr = validate.dUserAttr(attr)
     userObj = {
      
-            'userId': str(user['_id']),
+            'id': str(user['_id']),
             'fullName': user['fullName'],
             'age': user['age'],
             'author': user['author'],

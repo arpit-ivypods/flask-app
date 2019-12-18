@@ -2,7 +2,7 @@ def user():
     mappings = {
         "mappings": {
             "properties": {
-                "userId": {
+                "id": {
                     "type": "text"
                 },
                 "fullName": {
@@ -61,7 +61,7 @@ def rooms():
                 "userId": {
                     "type": "text"
                 },
-                "roomId": {
+                "id": {
                     "type": "text"
                 },
                 "houseId": {

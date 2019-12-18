@@ -45,7 +45,7 @@ def createRoomObj(house, room, user):
     room = validate.room(room)
     roomObj = {
         'userId': str(user['_id']),
-        'roomId': str(room['_id']),
+        'id': str(room['_id']),
         'houseId': str(house['_id']),
         'fullName': user['fullName'],
         'age': user['age'],

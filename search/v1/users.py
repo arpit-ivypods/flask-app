@@ -10,13 +10,15 @@ class userlisting(Resource):
         try:
             parser = reqparse.RequestParser()
             parser.add_argument(
-                'lat', type=float, help='pass the latitude', default=28.4498494)
+                'lat', type=float, help='pass the latitude', default=28.4498494, required=False, location='args')
             parser.add_argument(
-                'lng', type=float, help='pass the longitude', default=77.0566885)
-            parser.add_argument('page', type=int, help='page of listing', default=1)
-            parser.add_argument('count', type=int, help='total number of listings', default=20)
+                'lng', type=float, help='pass the longitude', default=77.0566885, required=False, location='args')
+            parser.add_argument('page', type=int, help='page of listing',
+                                default=1, required=False, location='args')
+            parser.add_argument('count', type=int, help='total number of listings',
+                                default=20, required=False, location='args')
             parser.add_argument('userId', type=str,
-                                help='id of the user', default='1')
+                                help='id of the user', default='1', required=False, location='args')
             args = parser.parse_args()
             _lat = args['lat']
             _lng = args['lng']
@@ -67,7 +69,7 @@ def userQueryBuilder(lat, lon, page, size,userId):
     },
     "must_not": [{
         "match": {
-            "userId": userId
+            "id": userId
         }
     }]}
     query["sort"] = [{
