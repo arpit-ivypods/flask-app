@@ -4,7 +4,7 @@ from elasticsearch import Elasticsearch
 import json
 from pymongo import MongoClient
 import boto3
-
+import env
 class delete(Resource):
     def post(self):
         try:
@@ -41,6 +41,7 @@ def validate(dbName, code):
 
 def getdb(_dbName):
     try:
+        client = env.MongoClient()
         # client = MongoClient("mongodb+srv://ivyprodadmin:ayj1RQmL9tp27Bkz@sandbox-ciuh2.mongodb.net/test?retryWrites=true&w=majority")
         db = client.get_database(_dbName)
         return db
@@ -49,12 +50,7 @@ def getdb(_dbName):
 
 def getS3():
     try:
-        ACCESS_KEY = 'AKIA3Z5LOAM3EAIW2PNW'
-        SECRET_KEY = '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'
-
-        s3 = boto3.resource('s3', aws_access_key_id=ACCESS_KEY,
-                    aws_secret_access_key=SECRET_KEY)
-        bucket = s3.Bucket('ivypods')
+        bucket = env.s3()
         return bucket
     except Exception as e:
         return None
