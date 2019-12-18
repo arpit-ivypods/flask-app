@@ -6,7 +6,7 @@ import json
 
 
 class roomlisting(Resource):
-    def post(self):
+    def get(self):
         try:
             parser = reqparse.RequestParser()
             parser.add_argument(
