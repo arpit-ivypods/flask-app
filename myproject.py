@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api
+from flask_cors import CORS
 
 # from one import test
 # from one import mongo
@@ -8,6 +9,7 @@ from esindex import *
 
 app = Flask(__name__)
 api = Api(app)
+CORS(app)
 
 # api.add_resource(test.HelloWorld,'/')
 # api.add_resource(mongo.mongotest, '/mongo')

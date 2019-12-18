@@ -8,6 +8,7 @@ dnspython==1.16.0
 docutils==0.15.2
 elasticsearch==7.1.0
 Flask==1.1.1
+Flask-Cors==3.0.8
 Flask-RESTful==0.3.7
 itsdangerous==1.1.0
 Jinja2==2.10.3
