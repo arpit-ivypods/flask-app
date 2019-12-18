@@ -41,7 +41,7 @@ def validate(dbName, code):
 
 def getdb(_dbName):
     try:
-        client = MongoClient("mongodb+srv://ivyprodadmin:ayj1RQmL9tp27Bkz@sandbox-ciuh2.mongodb.net/test?retryWrites=true&w=majority")
+        # client = MongoClient("mongodb+srv://ivyprodadmin:ayj1RQmL9tp27Bkz@sandbox-ciuh2.mongodb.net/test?retryWrites=true&w=majority")
         db = client.get_database(_dbName)
         return db
     except Exception as e:
