@@ -35,14 +35,21 @@ class roomlisting(Resource):
             count = res['hits']['total']['value']
             for hit in res['hits']['hits']:
                 rooms.append(hit["_source"])
-            return {'records': count, 'data': rooms}
+            return {
+                'status': 200,
+                'message': 'success',
+                'data': {
+                    'total': count,
+                    'users': rooms
+                }
+            }
 
             # # _email = args['email']
             # # subject = "Welcome to Roofpik "+_email+"!"
             # # return subject
 
         except Exception as e:
-            return {'status': '400', 'Message': str(e)}
+            return {'status': '400', 'message': str(e)}
 
 
 def roomQueryBuilder(lat, lon, page, size, userId):
