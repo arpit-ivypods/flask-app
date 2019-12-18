@@ -19,11 +19,11 @@ def user(data):
 
 def house(data):
     if data.get('locality') == None:
-            data['locality'] = None
+        data['locality'] = {'name':None}
     if data.get('genderPref') == None:
         data['genderPref'] = None
     if data.get('city') == None:
-        data['city'] = None
+        data['city'] = {'name': None}
     if data.get('genderPref') == None:
         data['genderPref'] = None
     if data.get('genderPref') == None:
