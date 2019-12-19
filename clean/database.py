@@ -58,7 +58,6 @@ def deleteData(bucket, imgDir, db):
     cols = db.list_collection_names()
     for c in cols:
         records = db[c]
-        print(c)
         x = records.delete_many({})
     bucket.objects.filter(Prefix=imgDir).delete()
     return True
