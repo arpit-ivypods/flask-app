@@ -14,14 +14,15 @@ class createRoomsIndex(Resource):
     def post(self):
         try:
             createAllRoomsData()
+            return {'status':200, 'message':'success'}
         except Exception as e:
-            return {'status': '400', 'Message': str(e)}
+            return {'status': 400, 'message': str(e)}
 
 def createAllRoomsData():
     deleteEsRoomsIndex()
     createEsRoomsIndex()
-    dataHouse = mongo.allRecords('houses')
-    saveEsRoom(dataHouse)
+    dataHouses = mongo.allRecords('houses')
+    saveEsRoom(dataHouses)
 
 def deleteEsRoomsIndex():
     es.delete('rooms')
@@ -30,16 +31,13 @@ def createEsRoomsIndex():
     roomModel = models.rooms()
     createRoomIndex = es.create('rooms', roomModel)
 
-def saveEsRoom(dataHouse):
+def saveEsRoom(dataHouses):
     allRooms = []
-    for house in dataHouse:
-        
+    for house in dataHouses:    
         room = mongo.recordsById('houseId', house['_id'], 'rooms')
-
         user = mongo.recordsById('_id',house['users'][0]['id'], 'users')
         roomObj = createRoomObj(house, room, user) 
         allRooms.append(roomObj)
-
     es.insertBulk('rooms', allRooms)
 
 def createRoomObj(house, room, user):

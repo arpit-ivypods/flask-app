@@ -29,7 +29,6 @@ class delete(Resource):
             return {'status': 400, 'message': str(e)}
 
 def validate(dbName, code):
-    print(dbName, code)
     status = True
     if dbName == 'ankit' or dbName == 'anshu' or dbName == 'beta' or dbName == 'local-db':
         status = True
@@ -41,8 +40,7 @@ def validate(dbName, code):
 
 def getdb(_dbName):
     try:
-        client = env.betaMongoClient()
-        db = client.get_database(_dbName)
+        db = env.mongoConnect(_dbName)
         return db
     except Exception as e:
         return None
@@ -61,4 +59,3 @@ def deleteData(bucket, imgDir, db):
         x = records.delete_many({})
     bucket.objects.filter(Prefix=imgDir).delete()
     return True
-

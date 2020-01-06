@@ -4,15 +4,16 @@ import boto3
 from botocore.exceptions import ClientError
 import env
 
-db = env.mongoConnect()
-
 def allRecords(col):
+    db = env.mongoConnect('')
     records = db[col]
     query = {}
     mydoc = records.find()
     return mydoc
 
 def recordsById(key, val, col):
+    db = env.mongoConnect('')
+    print(db)
     records = db[col]
     query = {key: val}
     try:

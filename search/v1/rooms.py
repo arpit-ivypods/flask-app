@@ -26,11 +26,9 @@ class roomlisting(Resource):
             _count = args['count']
             _userId = args['userId']
             query = roomQueryBuilder(_lat, _lng, _page, _count, _userId)
-            # return query
             es_object = env.esConnect()
             res = es_object.search(
                 index="rooms", body=query)
-                
             rooms = []
             count = res['hits']['total']['value']
             for hit in res['hits']['hits']:
@@ -43,14 +41,8 @@ class roomlisting(Resource):
                     'users': rooms
                 }
             }
-
-            # # _email = args['email']
-            # # subject = "Welcome to Roofpik "+_email+"!"
-            # # return subject
-
         except Exception as e:
-            return {'status': '400', 'message': str(e)}
-
+            return {'status': 400, 'message': str(e)}
 
 def roomQueryBuilder(lat, lon, page, size, userId):
     page = page - 1

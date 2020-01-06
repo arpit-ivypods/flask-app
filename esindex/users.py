@@ -12,8 +12,9 @@ class createUserIndex(Resource):
     def post(self):
         try:
             createAllUsersData()
+            return {'status': 200, 'message': 'success'}
         except Exception as e:
-            return {'status': '400', 'Message': str(e)}
+            return {'status': 400, 'message': str(e)}
 
 def createAllUsersData():
     deleteEsUserIndex()
